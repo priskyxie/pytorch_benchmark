@@ -173,6 +173,8 @@ def run_benchmarking(local_rank, ngpus, net, batch_size, iterations, run_fp16, d
     tm = time.time()
     for i in range(iterations):
         forwardbackward(inp, optimizer, network, target)
+        if(i%10==0):
+            print ("INFO: iteration " + str(i) + " completed.")
     torch.cuda.synchronize()
     
     tm2 = time.time()
